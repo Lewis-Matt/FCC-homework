@@ -111,3 +111,28 @@ function confirmEnding(str, target) {
   return re.test(str);
 }
 /***************************************************************************************************************************
+Repeat a given string str (first argument) for num times (second argument). Return an empty string if num is not a positive number. 
+For the purpose of this challenge, do not use the built-in .repeat() method. */
+// Recursively
+function repeatStringNumTimes(str, num) {
+  if (num < 1) {
+    return "";
+  } else {
+      return str + repeatStringNumTimes(str, num-1);
+    }
+}
+
+repeatStringNumTimes("abc", 3);
+
+// Non recursive
+function repeatStringNumTimes(str, num) {
+  var accumulatedStr = "";
+
+  while (num > 0) {
+    accumulatedStr += str;
+    num--;
+  }
+
+  return accumulatedStr;
+}
+/***************************************************************************************************************************
