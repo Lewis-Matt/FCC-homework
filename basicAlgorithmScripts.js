@@ -92,3 +92,22 @@ function largestOfFour(arr) {
 
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 /***************************************************************************************************************************
+Check if a string (first argument, str) ends with the given target string (second argument, target).
+This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, 
+we would like you to use one of the JavaScript substring methods instead.*/
+
+function confirmEnding(str, target) {
+  // Slice() copies a given number of elements to a new array
+  // If a negative number is provided as the first parameter to slice() , the offset is taken backwards from the end of the string.
+  // We are slice off the target length (in this ex, 1) from the end of the str, and then checking if it matches the target
+  return str.slice(-target.length) === target;
+}
+confirmEnding("Bastian", "n");
+
+// I attempted this with regex using myRegex = /target$/i; and then checking using str.indexOf(myRegex); but this did not work. 
+// This is because indexOf returns the index. To make it work with regex, I need to test() that the str meets myRegex:
+function confirmEnding(str, target) {
+  let re = new RegExp(target + "$", "i");
+  return re.test(str);
+}
+/***************************************************************************************************************************
