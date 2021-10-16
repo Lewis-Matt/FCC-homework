@@ -149,3 +149,66 @@ function truncateString(str, num) {
 }
 
 truncateString("A-tisket a-tasket A green and yellow basket", 8);
+/***************************************************************************************************************************
+Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, 
+the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined. */
+function findElement(arr, func) {
+  let num = 0;
+  for (var i = 0; i < arr.length; i++) {
+    // set the num (that will be used in the funciton) equal to our arr elements and loop through all the elements, testing with the func
+    num = arr[i];
+    // if the function (func) passed in is true, return the num
+    if (func(num)) {
+      return num;
+    } 
+  }
+  return undefined;
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+// The find() method returns the value of the first element in the provided array that satisfies the provided testing function.
+function findElement(arr, func) {
+  return arr.find(func);
+}
+
+/***************************************************************************************************************************
+Check if a value is classified as a boolean primitive. Return true or false.
+Boolean primitives are true and false. */
+function booWho(bool) {
+  if (typeof bool == "boolean") {
+    return true;
+  }
+  return false;
+}
+booWho(null);
+
+/***************************************************************************************************************************
+Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+For the purpose of this exercise, you should also capitalize connecting words like the and of. */
+
+function titleCase(str) {
+  // Split the str into an array of words at each space, and convert to lowercase
+  let words = str.toLowerCase().split(" ");
+  // Debug
+  console.log(words);
+  // Loop through each word in the array
+  for (var i = 0; i < words.length; i++) {
+    // Each word (i) in the array is having the first char (index 0) capitalized. The + words[i].slice(1) is adding the chars (from index 1 until the end of the word) back onto the, now capitailzed, first letter.
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+  }
+  // Converting the words array back into a string with spaces.
+  return words.join(" ");
+}
+
+titleCase("I'm a little tea pot");
+
+// With regex 
+// Find all non-whitespace characters (\S)
+// At the beginning of string (^)
+// Or after any whitespace character (\s)
+// The replace() method returns a new string with some or all matches of a pattern replaced by a replacement.
+function titleCase(str) {
+  return str.toLowerCase().replace(/(^|\s)\S/g, L => L.toUpperCase());
+}
+/***************************************************************************************************************************
