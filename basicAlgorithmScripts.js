@@ -212,3 +212,31 @@ function titleCase(str) {
   return str.toLowerCase().replace(/(^|\s)\S/g, L => L.toUpperCase());
 }
 /***************************************************************************************************************************
+Slice and Splice
+You are given two arrays and an index.
+Copy each element of the first array into the second array, in order.
+Begin inserting elements at index n of the second array.
+Return the resulting array. The input arrays should remain the same after the function runs.
+
+-- slice(start,end); method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) .
+- A negative index can be used, indicating an offset from the end of the sequence. slice(-2) extracts the last two elements in the sequence.
+
+-- splice(start, deleteCount, item1, item2, itemN); method changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+- If deleteCount is 0 or negative, no elements are removed.
+*/
+
+function frankenSplice(arr1, arr2, n) {
+  // slice() because don't want to alter the original array, so we make a copy
+  let arr2Copy = arr2.slice();
+  for (let i = 0; i< arr1.length; i++) {
+    // Iterate through each index of arr1, and copy it into the nth index of array 2
+    arr2Copy.splice(n,0,arr1[i]); 
+    // Debugging
+    console.log(arr2Copy);
+    // Increment the index to inserth the next ith element of arr1. Otherwise it would just keep overwriting nth element of arr2.
+    n++;
+  }
+  return arr2Copy;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
