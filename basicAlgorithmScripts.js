@@ -194,7 +194,8 @@ function titleCase(str) {
   console.log(words);
   // Loop through each word in the array
   for (var i = 0; i < words.length; i++) {
-    // Each word (i) in the array is having the first char (index 0) capitalized. The + words[i].slice(1) is adding the chars (from index 1 until the end of the word) back onto the, now capitailzed, first letter.
+    // Each word (i) in the array is having the first char (index 0) capitalized. The + words[i].slice(1) is adding the chars (from index 1 until 
+    // the end of the word) back onto the, now capitailzed, first letter.
     words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
   }
   // Converting the words array back into a string with spaces.
@@ -269,4 +270,57 @@ bouncer([7, "ate", "", false, 9]);
 function bouncer(arr) {
   return arr.filter(Boolean);
 }
+/***************************************************************************************************************************
+
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. 
+The returned value should be a number.
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] 
+and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+When the sort() function compares two values, it sends the values to the compare function, and sorts the values according 
+to the returned (negative, zero, positive) value.
+If the result is negative a is sorted before b.
+If the result is positive b is sorted before a.
+If the result is 0 no changes are done with the sort order of the two values.
+*/
+function getIndexToIns(arr, num) {
+  arr.sort(function(a,b) {return a-b;});
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= num) {
+      return i;
+    }
+  }
+  // If the num is larger than all the values in arr, it would be added at the end
+  return arr.length;
+}
+
+getIndexToIns([40, 60], 50);
+/***************************************************************************************************************************
+Mutations
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
+Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien. */
+
+function mutation(arr) {
+  // Convert each element to lowercase, so we don't have to deal with multiple cases
+  let elementOne = arr[0].toLowerCase();
+  let elementTwo = arr[1].toLowerCase();
+  // Loop through each char of elementTwo
+  for (let i = 0; i < elementTwo.length; i++) {
+    // Looks at the char at the ith index of element two. e.g. "h".  Then it looks at elementOne.indexOf("h"). If the letter is not there, indexOf() returns -1.
+    if (elementOne.indexOf(elementTwo[i]) === -1) {
+      return false;
+    }
+  }
+  return true;
+}
+mutation(["hello", "hey"]);
+
+/***************************************************************************************************************************
+
+
+
+
 /***************************************************************************************************************************
