@@ -240,3 +240,33 @@ function frankenSplice(arr1, arr2, n) {
 }
 
 frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+/***************************************************************************************************************************
+
+In JavaScript, there are 6 falsy values. If you convert any of these to a boolean, it will return false.
+Remove all falsy values from an array.
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+Hint: Try converting each value to a Boolean.
+!! it's short way to cast a variable to be a boolean (true or false) value.
+Or just use Boolean(value); which will return true or false. */
+
+function bouncer(arr) {
+  let cleanedArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let testForBool = Boolean(arr[i]);  // The next 2 lines could be refractored to ->  if(arr[i]) cleanedArr.push(arr[i]);
+    if (testForBool === true) {
+      cleanedArr.push(arr[i]);
+    }
+  }
+  return cleanedArr;
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+// The Array.prototype.filter method expects a function that returns a Boolean value which takes a single argument 
+// and returns true for truthy value or false for falsy value.
+
+function bouncer(arr) {
+  return arr.filter(Boolean);
+}
+/***************************************************************************************************************************
