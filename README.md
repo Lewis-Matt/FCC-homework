@@ -1,2 +1,3 @@
 # FCC_homework
-Lecture notes, small projects
+- Lecture notes
+- Functions
